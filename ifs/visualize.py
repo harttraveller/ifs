@@ -35,8 +35,8 @@ def v4D(points, save):
     fig.update_layout(
         template="plotly_dark",
         autosize=False,
-        width=500,
-        height=500,
+        width=480,
+        height=480,
         margin=dict(l=10, r=10, b=10, t=40, pad=10),
     )
     camera = dict(
