@@ -37,12 +37,12 @@ def v4D(points, save):
         autosize=False,
         width=480,
         height=480,
-        margin=dict(l=10, r=10, b=10, t=40, pad=10),
+        margin=dict(l=10, r=10, b=10, t=10, pad=0),
     )
     camera = dict(
         up=dict(x=0, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=0, y=2.5, z=0)
     )
-    fig.update_layout(scene_camera=camera, title="interactive graph")
+    fig.update_layout(scene_camera=camera)
     if save is not None:
         fig.write_html(save)
     else:
