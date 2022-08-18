@@ -35,8 +35,8 @@ def v4D(points, save):
     fig.update_layout(
         template="plotly_dark",
         autosize=False,
-        width=600,
-        height=600,
+        width=500,
+        height=500,
         margin=dict(l=10, r=10, b=10, t=10, pad=0),
     )
     if save is not None:
