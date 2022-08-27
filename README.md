@@ -6,7 +6,7 @@ A package for generating IFS fractals.
 
 ## Theory
 
-This isn't the "official" theory of IFS systems. I'm not a mathematician, I'm a cognitive science undergraduate student. Accordingly, the stuff here is a mix of stuff that I read, stuff from videos I watched, and stuff I literally just made up. Accordingly, take it with a grain of salt.
+This isn't the "official" theory of IFS systems. I'm not a mathematician, I'm a cognitive science undergraduate student. Accordingly, the stuff here is a mix of stuff that I read, stuff from videos I watched, and stuff I literally just made up. Accordingly, take it with a grain (or perhaps a tablespoon) of salt.
 
 An IFS consists of several components:
 
@@ -29,6 +29,7 @@ An IFS consists of several components:
 * What if the parameters of the midpoint/ruleset functions passed in dynamically adjusted themselves based on the points?
 * Is it possible to create some kind of evolutionary algorithm which allows you to converge towards IFS systems that generate any sort of structure?
   + If this is the case, then could you use this as a form of compression? Instead of actually storing a 3D object, for instance, could you just store the parameters required to generate the 3D object? If you could, that would be an extremely useful tool for compression.
+  + TODO: If ^this is the case, and I can actually do this, then I should not just write a blog post, but I should also compile this into a basic publication and post it on arxiv.
 
 ## Notes to sort
 
