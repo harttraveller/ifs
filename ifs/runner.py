@@ -19,15 +19,20 @@ class IFS:
     def add_vertices(self, vertices):
         pass
 
-    def add_midpoint_function(self, midpoint):
+    def add_midpoint_function(self, midpoint, params):
         """
-        The name is deceiving. While this should accept a "function" in mathematical terms,
-        actually, an instantiated class should be passed.
-
-        Args:
-            midpoint (_type_): _description_
+        A midpoint function and the parameters for the functions execution.
         """
         pass
 
-    def add_ruleset_function(self, ruleset):
+    def add_ruleset_function(self, ruleset, params):
+        """
+        A ruleset function and the parameters for the functions execution.
+        """
+        pass
+
+    def run(self):
+        """
+        Runs the IFS system.
+        """
         pass
