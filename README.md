@@ -24,6 +24,12 @@ An IFS consists of several components:
 * Generator function needs to test convergence - functions must be convergent in order for there to be potential for a fractal to form.
   + question: if a function is convergent along a one dimensional axis, is it also convergent in all higher dimensions?
 
+## Ideas
+
+* What if the parameters of the midpoint/ruleset functions passed in dynamically adjusted themselves based on the points?
+* Is it possible to create some kind of evolutionary algorithm which allows you to converge towards IFS systems that generate any sort of structure?
+  + If this is the case, then could you use this as a form of compression? Instead of actually storing a 3D object, for instance, could you just store the parameters required to generate the 3D object? If you could, that would be an extremely useful tool for compression.
+
 ## Notes to sort
 
 For instance, take the archetypal Sierpinski chaos game.
