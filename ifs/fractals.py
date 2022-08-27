@@ -1,6 +1,6 @@
 import random
 import numpy as np
-from ifs.resources import SIMPLEX
+from ifs.resources.simplex import SIMPLEX
 
 # where point = the current point, and edges = the edge points
 select = lambda point, edges: random.choice(edges)

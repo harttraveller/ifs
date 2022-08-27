@@ -1,4 +1,67 @@
 import plotly.graph_objects as go
+from ifs.resources.minimal_layout import minimal_template
+
+
+class Animate:
+    # for anything involving animation
+    # - point placement
+    # - moving through slice (2D slide of 3D, or 3D slice of 4D)
+    # - modifying parameters
+    pass
+
+
+class Histogram:
+    def __init__(self) -> None:
+        pass
+
+    def v1D(self):
+        pass
+
+
+class ColorHistogram:
+    def __init__(self) -> None:
+        pass
+
+    def v2D(self):
+        pass
+
+class
+
+class Scatterplot:
+    def __init__(self) -> None:
+        pass
+
+    def v2D(self):
+        pass
+
+    def v3D(self):
+        pass
+
+
+class ColorScatterplot:
+    def __init__(self) -> None:
+        pass
+
+    def v3D(self):
+        pass
+
+    def v4D(self):
+        pass
+
+
+class ColorScatterplot:
+    pass
+
+
+class Visualize:
+    # for any non-animated visualizations
+    # - 1D (histogram)
+    # - 2D (2D scatterplot, 1D histogram as slice)
+    # - 3D (3D scatterplot, 2D scatterplot + color, 2D scatterplot + size, 2D scatterplot as slice, 1D histogram + color as slice)
+    # - 4D (3D scatterplot + color, 3D scatterplot + size, 3D scatterplot as slice, 2D scatterplot + color + size, 2D)
+    # - 5D (3D scatterplot + color + size, 3D scatterplot + color + slice, 3D scatterplot + size + slice)
+    def __init__(self) -> None:
+        pass
 
 
 def v1D(points, save):  # histogram
@@ -29,11 +92,12 @@ def v4D(points, save):
                     showscale=False,
                     reversescale=True,
                 ),
+                hoverinfo="skip",
             )
         ]
     )
     fig.update_layout(
-        template="plotly_dark",
+        template=minimal_template,
         autosize=False,
         width=480,
         height=480,
@@ -146,13 +210,25 @@ def make_chart(x, y, z):
 
     # make data
     fig_dict["data"].append(
-        {"x": xd[z[0]], "y": yd[z[0]], "mode": "markers", "marker": {}}
+        {
+            "x": xd[z[0]],
+            "y": yd[z[0]],
+            "mode": "markers",
+            "marker": {},
+            "hoverinfo": "skip",
+        }
     )
 
     # make frames
     for _z in z:
         frame = {"data": [], "name": str(_z)}
-        data_dict = {"x": xd[_z], "y": yd[_z], "mode": "markers", "marker": {}}
+        data_dict = {
+            "x": xd[_z],
+            "y": yd[_z],
+            "mode": "markers",
+            "marker": {},
+            "hoverinfo": "skip",
+        }
         frame["data"].append(data_dict)
 
         fig_dict["frames"].append(frame)
@@ -175,7 +251,7 @@ def make_chart(x, y, z):
     fig = go.Figure(fig_dict)
 
     fig.update_layout(
-        template="plotly_dark",
+        template=minimal_template,
         autosize=False,
         width=480,
         height=480,
@@ -194,23 +270,30 @@ def viz(a, b, c):
                 z=c,
                 mode="markers",
                 marker=dict(
-                    size=1.5,
-                    colorscale="Viridis",  # one of plotly colorscales
+                    size=1,
+                    color="white",
                     showscale=False,
                     reversescale=True,
                 ),
+                hoverinfo="skip",
             )
         ]
     )
+
+    fig.update_layout(template=minimal_template)
     fig.update_layout(
-        template="plotly_dark",
         autosize=False,
         width=480,
         height=480,
-        margin=dict(l=10, r=10, b=10, t=10, pad=0),
+        margin=dict(l=0, r=0, b=0, t=0, pad=0),
+        yaxis_zeroline=False,
+        xaxis_zeroline=False,
+        paper_bgcolor="rgba(0,0,0,0)",
+        plot_bgcolor="rgba(0,0,0,0)",
     )
+    fig.update_yaxes(title="asdf")
     camera = dict(
         up=dict(x=0, y=0, z=1), center=dict(x=0, y=0, z=0), eye=dict(x=0, y=2.5, z=0)
     )
     fig.update_layout(scene_camera=camera)
-    fig.show()
+    fig.show(config=dict(displayModeBar=False))
