@@ -13,6 +13,16 @@ from types import FunctionType
 from typing import Dict
 
 
+class Midpoint:
+    def __init__(self, function, params):
+        pass
+
+
+class Ruleset:
+    def __init__(self, function, params):
+        pass
+
+
 class IFS:
     def __init__(
         self,
@@ -53,6 +63,14 @@ class IFS:
         Params:
             n (int): The number of iterations to run the IFS system.
         """
-        pass
-        # get the number of dimensions
-        # create the point list with the first point at the origin if start is None
+        points = [self.start_point]
+        selected_edges = list()
+        for _ in range(n):
+            selected_edge = self.ruleset(
+                points, selected_edges, self.edges, **self.ruleset_params
+            )
+            computed_midpoint = self.midpoint(
+                self.points[-1], selected_edge, **self.midpoint_params
+            )
+            points.append(computed_midpoint)
+        return points
