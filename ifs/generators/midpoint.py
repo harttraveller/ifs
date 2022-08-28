@@ -69,9 +69,10 @@ class EquationGenerator:
         self.bias = bias
         self.layers = layers
         self.n = n
+        self.string_params = ", ".join(params)
 
     def generate_list_of_components(
-        params: List[str], bias: List[float], n: int
+        self, params: List[str], bias: List[float], n: int
     ) -> List[str]:
         op = OperationHandler(params, bias)
         return [op.random() for _ in range(n)]
@@ -84,7 +85,8 @@ class EquationGenerator:
         for i in layers:
             params = self.generate_list_of_components(params, bias, i)
             bias = None  # bias can only be applied on first round
-        return params[0]
+        equation = params[0]
+        equation = f"({self.string_params}) = {equation}"
 
     def generate_equations(
         self, params: List[str], bias: List[float], layers: List[int], n: int
