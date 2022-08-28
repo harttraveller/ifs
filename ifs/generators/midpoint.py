@@ -8,6 +8,7 @@ and
 
 from typing import List
 import numpy as np
+from tqdm import tqdm
 
 
 class OperationHandler:
@@ -92,7 +93,7 @@ class EquationGenerator:
     def generate_equations(
         self, params: List[str], bias: List[float], layers: List[int], n: int
     ):
-        return [self.generate_equation(params, bias, layers) for _ in range(n)]
+        return [self.generate_equation(params, bias, layers) for _ in tqdm(range(n))]
 
     def run(self):
         return self.generate_equations(self.params, self.bias, self.layers, self.n)
