@@ -6,6 +6,9 @@ This is the class to generate an IFS fractal. It requires:
 * a ruleset for the application of the function
 * some arbitrary starting point
 
+? TODO: add recursion - allow IFS parameters to be informed by values generated in the IFS
+
+
 """
 
 import numpy as np
@@ -14,13 +17,58 @@ from typing import Dict
 
 
 class Midpoint:
-    def __init__(self, function, params):
+    def __init__(self, function):
+        pass
+
+    def set_params(self, **kwargs):
+        self.params = kwargs
+
+    def compute(self, A, B):
         pass
 
 
 class Ruleset:
-    def __init__(self, function, params):
+    def __init__(self, function):
         pass
+
+    def set_params(self, **kwargs):
+        self.params = kwargs
+
+    def compute(self, A, B):
+        pass
+
+
+class IFS:
+    def __init__(
+        self,
+        start: np.array,
+        edges: np.array,
+        midpoint: Midpoint,
+        ruleset: Ruleset,
+        feedback: bool = False,
+    ) -> None:
+        self.start = start
+        self.edges = edges
+        self.midpoint = midpoint
+        self.ruleset = ruleset
+        self.feedback = feedback
+
+    def run(self, n: int) -> np.array:
+        """
+        Runs the IFS system.
+
+        Params:
+            n (int): The number of iterations to run the IFS system.
+        """
+        points = [self.start]
+        selected_edges = list()
+        for _ in range(n):
+            # could potentially set new params here, forming internal feedback loop
+            selected_edge = self.ruleset.compute(points, selected_edges, self.edges)
+            selected_edges.append(selected_edge)
+            computed_midpoint = self.midpoint.compute(points[-1], selected_edge)
+            points.append(computed_midpoint)
+        return points, selected_edges
 
 
 class IFS:
