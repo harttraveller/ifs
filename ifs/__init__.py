@@ -1,1 +1,1 @@
-from ifs.ifs import IFS
+from ifs.runner import IFS
