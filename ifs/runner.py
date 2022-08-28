@@ -14,70 +14,39 @@ from typing import Dict
 
 
 class IFS:
-    def __init__(self) -> None:
-        pass
+    def __init__(
+        self,
+        edges: np.array,
+        midpoint: FunctionType,
+        midpoint_params: Dict,
+        ruleset: FunctionType,
+        ruleset_params: Dict,
+        start_point: np.array = None,
+    ) -> None:
+        self.edges = edges
+        self.dimensions = self.__resolve_dimensionality(edges)
+        self.midpoint = midpoint
+        self.midpoint_params = midpoint_params
+        self.ruleset = ruleset
+        self.ruleset_params = ruleset_params
+        self.start_point = self.__set_default_start(start_point, self.dimensions)
 
     # Private Methods
-    def __resolve_dimensionality(self, vertices: np.array) -> int:
+    def __resolve_dimensionality(self, edges: np.array) -> int:
         """
         Resolves the number of dimensions the vertices are expressed in.
         ? Surely a better way to articulate.
         """
-        pass
+        return len(edges)
 
-    # Public Methods
-    def reset(self) -> None:
-        pass
-
-    def add_edges(self, vertices: np.array):
-        """
-        Adds the edge vertices.
-        """
-        self.__edges = vertices
-        self.__dim = self.__resolve_dimensionality(vertices)
-
-    def add_midpoint_function(self, midpoint: FunctionType, params: Dict) -> None:
-        """
-        A midpoint function and the parameters for the functions execution.
-        """
-        self.__midpoint = midpoint
-        self.__midpoint_params = params
-
-    def add_ruleset_function(self, ruleset: FunctionType, params: Dict) -> None:
-        """
-        A ruleset function and the parameters for the functions execution.
-        """
-        self.__ruleset = ruleset
-        self.__ruleset_params = params
-
-    # Function Execution
-    def midpoint(self, A: np.array, B: np.array, params: Dict = None) -> np.array:
-        if params is None:
-            return self.__midpoint(A, B, **self.__midpoint_params)
+    def __set_default_start(self, start_point: np.array, dimensions: int) -> Dict:
+        if start_point is None:
+            return np.zeros(dimensions)
         else:
-            return self.__midpoint(A, B, **params)
-
-    def ruleset(self, A: np.array, B: np.array, params: Dict = None) -> np.array:
-        if params is None:
-            return self.__ruleset(A, B, **self.__ruleset_params)
-        else:
-            return self.__ruleset(A, B, **params)
-
-    # Properties
-    @property
-    def edges(self) -> np.array:
-        return self.__edges
-
-    @property
-    def midpoint_params(self) -> Dict:
-        return self.__midpoint_params
-
-    @property
-    def ruleset_params(self) -> Dict:
-        return self.__ruleset_params
+            return start_point
 
     # Run IFS
-    def run(self, n: int, start: np.array = None) -> np.array:
+    def run(self, n: int) -> np.array:
         """
         Runs the IFS system.
 
