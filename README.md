@@ -51,3 +51,52 @@ For fractals, perhaps use Bezier curves as midpoint functions?
     # - 3D (3D scatterplot, 2D scatterplot + color, 2D scatterplot + size, 2D scatterplot as slice, 1D histogram + color as slice)
     # - 4D (3D scatterplot + color, 3D scatterplot + size, 3D scatterplot as slice, 2D scatterplot + color + size, 2D)
     # - 5D (3D scatterplot + color + size, 3D scatterplot + color + slice, 3D scatterplot + size + slice)
+
+Needs to be able to take in some function
+
+requires the current point, also the selected edge, and also some set of parameters
+
+I should be able to use sympy to resolve the function, which will help for evolutionary search.
+
+* must always have parameters A and B, can have any other number of parameters
+* must be valid mathematical operation
+# Types
+* main inputs
+* variable parameters (can set)
+* constants
+
+### Operators
+
+* addition (must be length 2 values)
+* subtraction (must be length 2 values)
+* multiplication (must be length 2 values)
+* division (must be length 2 values)
+* powers (must be length 2 values)
+  + implicitly covers square roots (powers where in $m^n$, n = [0, 1])
+* logarithms (must be length 2 values)
+* sin, cos, tan (must be length 1 values)
+
+### Steps
+
+1. First, decide on how many parameters will go into the function.
+# need to be able to take a bunch of variables, and generate a random
+
+# function with them
+
+# Function Components
+
+# select some number of variables with some probability
+
+# select an operation to apply to them (must be valid operation)
+
+# Component Combination
+
+# ? need to be able to combine the generated functions into a valid output
+
+# ! how does the "flavor" of IFS generated change with the change in generator
+
+# ! function parameters?
+
+# ! how do we integrate the capacity for small modifications into the generators
+
+# ! so that an evolutionary search can be done?
