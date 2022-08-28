@@ -87,6 +87,7 @@ class EquationGenerator:
             bias = None  # bias can only be applied on first round
         equation = params[0]
         equation = f"({self.string_params}) = {equation}"
+        return equation
 
     def generate_equations(
         self, params: List[str], bias: List[float], layers: List[int], n: int
