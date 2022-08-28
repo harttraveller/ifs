@@ -87,7 +87,7 @@ def generate_functions(params, bias, layers, n):
     for equation in equations:
         function_dictionary = dict()
         function_dictionary["parameters"] = params
-        function_dictionary["equation"] = f"(f{string_params}) = {equation}"
+        function_dictionary["equation"] = f"({string_params}) = {equation}"
         function_dictionary["function"] = eval(f"{function}{equation}")
         functions.append(function_dictionary)
     return functions
